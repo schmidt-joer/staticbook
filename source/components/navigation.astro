@@ -1,0 +1,58 @@
+---
+import data from '../data/theme.json';
+---
+
+<nav class="navigation">
+  <a href="/" class="navigation-return">
+    <span class="navigation-return_product">StaticBook</span>
+    <span class="navigation-return_separator"></span>
+    <span class="navigation-return_brand">{data.brand}</span>
+  </a>
+</nav>
+
+<style lang="scss">
+  .navigation {
+    background: var(--c-body);
+    align-items: center;
+    display: flex;
+    grid-column: 1/-1;
+    height: 3rem;
+    justify-content: space-between;
+    position: sticky;
+    gap: 3rem;
+    top: 0;
+
+    @media print {
+      display: none;
+    }
+
+    &-return {
+      align-items: center;
+      display: flex;
+      gap: .5rem;
+      padding: .25rem .5rem;
+      transition: background-color 150ms;
+      border-radius: .375rem;
+
+      &:hover,
+      &:focus {
+        background: var(--c-010);
+      }
+
+      &:focus {
+        outline: .125rem solid var(--c-020);
+      }
+
+      &_product {
+        font-weight: 500;
+        color: var(--c-060);
+      }
+
+      &_separator {
+        width: .0625rem;
+        background: var(--c-030);
+        height: 1.25rem;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+import Actions from '../components/actions.astro';
+import Contents from '../components/contents.astro';
+import Footer from '../components/footer.astro';
+import Head from '../components/head.astro';
+import Navigation from '../components/navigation.astro';
+import '../styles/globals.scss';
+import '../styles/markdown.scss';
+
+const { meta } = Astro.props;
+---
+
+<script>
+  import Alpine from 'alpinejs';
+  import '../scripts/alpine';
+  window.Alpine = Alpine;
+  Alpine.start();
+</script>
+
+<html lang="de">
+
+<Head {meta} />
+
+<body>
+  <div class="page">
+    <Navigation />
+    <Contents />
+    <main class="page_markdown">
+      <slot />
+    </main>
+    <Actions />
+    <Footer />
+  </div>
+</body>
+
+</html>
+
+<style lang="scss">
+  .page {
+    min-height: 100vh;
+    position: relative;
+    width: min(100%, 91.5rem);
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: [center] 1fr;
+    grid-template-rows: 3rem auto 3rem;
+
+    @media (min-width: 60rem) {
+      grid-template-columns: 1fr [center] 3fr;
+    }
+
+    @media (min-width: 90rem) {
+      grid-template-columns: 1fr [center] 4fr 1fr;
+    }
+
+    &_markdown {
+      padding: .75rem .5rem;
+      grid-column: center;
+    }
+  }
+</style>

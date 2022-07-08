@@ -1,0 +1,19 @@
+---
+const { type } = Astro.props;
+---
+
+<svg class="icon">
+  <use href={`/assets/icons/feather.svg#${type}`} />
+</svg>
+
+<style lang="scss">
+  .icon {
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: square;
+    stroke-linejoin: square;
+    fill: none;
+    width: 1rem;
+    height: 1rem;
+  }
+</style>

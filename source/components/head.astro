@@ -1,0 +1,38 @@
+---
+const { meta } = Astro.props;
+const meta_title = meta?.title ? `${meta.title} – StaticBook` : 'StaticBook';
+const meta_url = Astro.canonicalURL.href;
+---
+
+<head>
+  <link rel="canonical" href={meta_url} />
+  <link rel="icon" href="/assets/icons/favicon.svg" />
+
+
+  {/* Common Meta Tags */}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content={meta_title} />
+  <meta name="description" content={meta?.description} />
+  {meta?.themeColor && <meta name="theme-color" content={meta.themeColor} />}
+  <meta name="robots" content={meta?.robots ?? "index, follow" } />
+
+
+  {/* Open Graph / Facebook */}
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={meta_url} />
+  <meta property="og:site_name" content={meta?.siteName ?? meta_url} />
+  <meta property="og:title" content={meta_title}>
+  {meta?.description && <meta property="og:description" content={meta.description} />}
+  {meta?.image && <meta property="og:image" content={meta.image} />}
+
+  {/* Twitter */}
+  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:url" content={meta_url} />
+  <meta property="twitter:title" content={meta_title} />
+  {meta?.description && <meta property="twitter:description" content={meta.description} />}
+  {meta?.image && <meta property="twitter:image" content={meta.image} />}
+
+  <title>{meta_title}</title>
+</head>

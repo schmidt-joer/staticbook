@@ -1,0 +1,84 @@
+---
+import data from '../../package.json';
+import Icon from "./icon.astro";
+---
+
+<div class="about" style="display: none" x-show="about" x-transition>
+  <div class="about-splash" x-on:click.outside="toggleAbout">
+    <div class="about-splash_header">
+      <div class="about-splash_product">StaticBook</div>
+      <button class="about-splash_close" x-on:click="toggleAbout">
+        <Icon type="x" />
+      </button>
+    </div>
+    <p class="about-splash_version">Version {data.version}</p>
+    <ul class="about-splash_packages">Verwendete Bibliotheken
+      {Object.entries(data.devDependencies).map(([name, version]) => <li>{name}: {version}</li>)}
+      {Object.entries(data.dependencies).map(([name, version]) => <li>{name}: {version}</li>)}
+    </ul>
+    <a class="about-splash_owner" href="https://schmidt-joer.com/" target="_blank" rel="noopener noreferrer">
+      <img class="about-splash_logo" src="/assets/icons/logo_schmidt-joer.svg" alt="">
+      <span class="about-splash_name">Schmidt & Joer</span>
+    </a>
+  </div>
+</div>
+
+<style lang="scss">
+  .about {
+    backdrop-filter: blur(.125rem);
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: grid;
+    place-content: center;
+
+    &-splash {
+      min-width: 17rem;
+      background: var(--c-010);
+      padding: 1.5rem;
+      border-radius: .75rem;
+
+      &_header {
+        justify-content: space-between;
+        display: flex;
+        gap: 3rem;
+        margin-bottom: .75rem;
+      }
+
+      &_version {
+        margin-bottom: .75rem;
+      }
+
+      &_product {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 500;
+      }
+
+      &_close {
+        padding: .5rem;
+        background: var(--c-020);
+        border-radius: .75rem;
+      }
+
+      &_packages {
+        list-style-position: inside;
+        margin-bottom: 1.25rem;
+
+        li {
+          color: var(--c-060);
+        }
+      }
+
+      &_owner {
+        display: flex;
+        gap: .5rem;
+        line-height: 1rem;
+      }
+
+      &_logo {
+        width: 1rem;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+import Link from "./link.astro";
+
+// Data Fetching: List all Markdown posts in the repo.
+let docs = await Astro.glob("../pages/**/*.md");
+docs = docs.sort((a, b) => new Date(a.frontmatter.order).valueOf() - new Date(b.frontmatter.order).valueOf());
+---
+
+<aside class="contents">
+  {docs.map(page =>
+  <Link icon="hash" {...page} />)}
+</aside>
+
+<style lang="scss">
+  .contents {
+    position: sticky;
+    top: 3rem;
+    padding: .75rem 0;
+    display: none;
+    height: max-content;
+
+    @media (min-width: 60rem) {
+      display: block;
+    }
+
+    @media print {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+import Icon from "./icon.astro";
+
+const { on, label, icon } = Astro.props;
+---
+
+<button class="action" x-on:click={on}>
+  {icon && <Icon type={icon} />}
+  <span class="action_label">{label}</span>
+</button>
+
+<style lang="scss">
+  .action {
+    width: 100%;
+    display: flex;
+    gap: .5rem;
+    padding: .5rem;
+    border-radius: .375rem;
+    transition: background-color 150ms;
+
+    &:hover,
+    &:focus {
+      background: var(--c-010);
+    }
+
+    &:focus {
+      outline: .125rem solid var(--c-020);
+    }
+
+    :global(svg) {
+      color: var(--c-060);
+    }
+
+    &_label {
+      line-height: 1rem;
+    }
+  }
+</style>

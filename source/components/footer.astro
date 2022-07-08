@@ -1,0 +1,25 @@
+--- 
+import About from "./about.astro";
+---
+
+<footer class="footer" x-data="utils">
+  <button class="footer-button" x-on:click="toggleAbout">Über StaticBook</button>
+  <About/>
+</footer>
+
+<style lang="scss">
+  .footer {
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: center;
+    padding: .75rem;
+
+    @media print {
+      display: none;
+    }
+
+    &-button {
+      color: var(--c-060);
+    }
+  }
+</style>

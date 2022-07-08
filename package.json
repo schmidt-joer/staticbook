@@ -1,0 +1,19 @@
+{
+  "name": "staticbook",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "@astrojs/markdown-remark": "^0.11.3",
+    "astro": "^1.0.0-beta.61",
+    "sass": "^1.53.0"
+  },
+  "dependencies": {
+    "alpinejs": "^3.10.2"
+  }
+}

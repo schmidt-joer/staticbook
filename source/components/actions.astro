@@ -1,0 +1,87 @@
+---
+import Action from '../components/action.astro';
+---
+
+<!-- <script>
+  const actionsContents = document.querySelector('.actions-contents');
+  const anchor = (slug, label) => `<a class="actions-contents_link" href="#${slug}">${label}</a>`;
+  const pageMarkdown = document.querySelector('.page_markdown');
+  const headlines = pageMarkdown.querySelectorAll('h1,h2,h3,h4,h5,h6');
+
+  headlines.forEach(headline => actionsContents.insertAdjacentHTML('beforeend', anchor(headline.id, headline.textContent)))
+</script> -->
+
+<aside class="actions" x-data="utils">
+  <div class="actions-contents" style="display: none" x-show="fetchHeadlines().length" x-transition>
+    <p class="actions-contents_title">Inhalte</p>
+    <template x-for="headline in fetchHeadlines">
+      <a class="actions-contents_link" x-bind:href="'#'+headline.id" x-text="headline.textContent"></a>
+    </template>
+  </div>
+  <hr class="actions-spacer" style="display: none" x-show="fetchHeadlines().length" x-transition>
+  <div class="actions-scripts">
+    <p class="actions-scripts_title">Aktionen</p>
+    <Action on="copyLink" label="Link kopieren" icon="clipboard"/>
+  </div>
+</aside>
+
+<style lang="scss">
+  .actions {
+    position: sticky;
+    top: 3rem;
+    padding: .75rem 0;
+    display: none;
+    height: max-content;
+
+    @media (min-width: 90rem) {
+      display: block;
+    }
+
+    @media print {
+      display: none;
+    }
+
+    &-contents {
+      &_title {
+        line-height: 2rem;
+        padding: 0 .5rem;
+        font-weight: 500;
+        color: var(--c-060);
+      }
+
+      &_link {
+        width: 100%;
+        line-height: 1rem;
+        padding: .5rem;
+        border-radius: .375rem;
+        transition: background-color 150ms;
+
+        &:hover,
+        &:focus {
+          background: var(--c-010);
+        }
+
+        &:focus {
+          outline: .125rem solid var(--c-020);
+        }
+      }
+    }
+
+    &-spacer {
+      margin: 1.5rem .5rem;
+      height: .125rem;
+      width: 100%;
+      background: var(--c-020);
+    }
+
+    &-scripts {
+      &_title {
+        @extend .actions-contents_title;
+      }
+
+      &_trigger {
+        @extend .actions-contents_link;
+      }
+    }
+  }
+</style>
