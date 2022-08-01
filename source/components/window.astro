@@ -1,0 +1,53 @@
+---
+import Icon from "./icon.astro";
+
+const { title, close } = Astro.props;
+---
+
+<div class="window" x-on:click.outside={close}>
+  <div class="window-head">
+    <button class="window-head_close" x-on:click={close}>
+      <Icon type="x" />
+    </button>
+    <div class="window-head_title">{title}</div>
+  </div>
+  <div class="window-body">
+    <slot />
+  </div>
+</div>
+
+<style lang="scss">
+  .window {
+    min-width: 17rem;
+    border-radius: .75rem;
+    background: var(--c-010);
+
+    &-head {
+      column-gap: .25rem;
+      border-radius: .75rem;
+      display: grid;
+      grid-template-columns: 2rem 1fr 2rem;
+      background: var(--c-020);
+
+      &_close {
+        border-radius: .75rem;
+        padding: .5rem;
+        transition: background-color 150ms;
+
+        &:hover {
+          background: var(--c-030);
+        }
+      }
+
+      &_title {
+        text-align: center;
+        line-height: 2rem;
+      }
+    }
+
+    &-body{
+      padding: .75rem;
+    }
+
+  }
+</style>
