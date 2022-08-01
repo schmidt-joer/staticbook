@@ -1,9 +1,10 @@
 --- 
 import About from "./about.astro";
+import { de } from "../data/translation.json";
 ---
 
 <footer class="footer">
-  <button class="footer-button" x-on:click="toggleAbout">Über StaticBook</button>
+  <button class="footer-button" x-on:click="toggleAbout">{de.about.title}</button>
   <About/>
 </footer>
 

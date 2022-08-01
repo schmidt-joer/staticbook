@@ -1,0 +1,21 @@
+{
+  "de": {
+    "contents": {
+      "title": "Inhalte"
+    },
+    "actions": {
+      "title": "Aktionen",
+      "copyLink": {
+        "label": "Link kopieren",
+        "labelActive": "Link kopiert"
+      },
+      "sharePage": {
+        "label": "Seite teilen",
+        "labelActive": "Seite geteilt"
+      }
+    },
+    "about": {
+      "title": "Über StaticBook"
+    }
+  }
+}

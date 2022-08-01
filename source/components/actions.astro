@@ -1,5 +1,6 @@
 ---
 import Action from '../components/action.astro';
+import { de } from "../data/translation.json";
 ---
 
 <!-- <script>
@@ -13,14 +14,14 @@ import Action from '../components/action.astro';
 
 <aside class="actions">
   <div class="actions-contents" style="display: none" x-show="fetchHeadlines().length" x-transition>
-    <p class="actions-contents_title">Inhalte</p>
+    <p class="actions-contents_title">{de.contents.title}</p>
     <template x-for="headline in fetchHeadlines">
       <a class="actions-contents_link" x-bind:href="'#'+headline.id" x-text="headline.textContent"></a>
     </template>
   </div>
   <hr class="actions-spacer" style="display: none" x-show="fetchHeadlines().length" x-transition>
   <div class="actions-scripts">
-    <p class="actions-scripts_title">Aktionen</p>
+    <p class="actions-scripts_title">{de.actions.title}</p>
     <Action on="copyLink" label="Link kopieren" icon="clipboard"/>
     <Action on="sharePage" label="Seite teilen" icon="share-2" />
   </div>

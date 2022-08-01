@@ -1,3 +1,5 @@
+import { de } from "../data/translation.json";
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 document.addEventListener("alpine:init", () => {
@@ -9,6 +11,7 @@ document.addEventListener("alpine:init", () => {
       await sleep(duration);
       this.$data.label = label;
     },
+
     // Toggle About
     about: false,
     toggleAbout() {
@@ -24,8 +27,8 @@ document.addEventListener("alpine:init", () => {
     // Copy Page Link
     copyLink() {
       this.action({
-        label: "Link kopieren",
-        labelActive: "Link kopiert",
+        label: de.actions.copyLink.label,
+        labelActive: de.actions.copyLink.labelActive,
         callback: () => {
           navigator.clipboard.writeText(location.href);
         },
@@ -34,8 +37,8 @@ document.addEventListener("alpine:init", () => {
 
     async sharePage() {
       this.action({
-        label: "Seite teilen",
-        labelActive: "Seite geteilt",
+        label: de.actions.sharePage.label,
+        labelActive: de.actions.sharePage.labelActive,
         callback: async () => {
           try {
             await navigator.share({
