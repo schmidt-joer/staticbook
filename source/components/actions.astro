@@ -11,7 +11,7 @@ import Action from '../components/action.astro';
   headlines.forEach(headline => actionsContents.insertAdjacentHTML('beforeend', anchor(headline.id, headline.textContent)))
 </script> -->
 
-<aside class="actions" x-data="utils">
+<aside class="actions">
   <div class="actions-contents" style="display: none" x-show="fetchHeadlines().length" x-transition>
     <p class="actions-contents_title">Inhalte</p>
     <template x-for="headline in fetchHeadlines">
@@ -22,6 +22,7 @@ import Action from '../components/action.astro';
   <div class="actions-scripts">
     <p class="actions-scripts_title">Aktionen</p>
     <Action on="copyLink" label="Link kopieren" icon="clipboard"/>
+    <Action on="sharePage" label="Seite teilen" icon="share-2" />
   </div>
 </aside>
 

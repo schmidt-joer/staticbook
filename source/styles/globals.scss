@@ -21,6 +21,15 @@
   --c-010: #181818;
   --c-body: #000000;
 
+  --f-12: 0.75rem;
+  --f-14: 0.875rem;
+  --f-18: 1.125rem;
+  --f-24: 1.5rem;
+  --f-32: 2rem;
+  --f-42: 2.625rem;
+  --f-54: 3.375rem;
+  --f-68: 4.25rem;
+
   @media print, (prefers-color-scheme: light) {
     --c-body: #ffffff;
     --c-010: #f0f0f0;

@@ -4,9 +4,9 @@ import Icon from "./icon.astro";
 const { on, label, icon } = Astro.props;
 ---
 
-<button class="action" x-on:click={on}>
+<button class="action" x-data={`{label: '${label}'}`} x-on:click={on}>
   {icon && <Icon type={icon} />}
-  <span class="action_label">{label}</span>
+  <span x-show="label" x-text="label" class="action_label">{label}</span>
 </button>
 
 <style lang="scss">
